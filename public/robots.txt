@@ -1,0 +1,3 @@
+Sitemap: https://www.mododevida.com/sitemap.xml
+User-agent: *
+Disallow:
