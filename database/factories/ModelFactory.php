@@ -24,38 +24,6 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 });
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\Vendor::class, function (Faker\Generator $faker) {
-
-    return [
-        'name' => $faker->company,
-        'email' => $faker->unique()->safeEmail,
-        'phone' => $faker->phoneNumber,
-        'website' => $faker->url,
-        'description' => $faker->sentence,
-        'logo' => 'logo.png',
-        'slug' => $faker->unique()->slug,
-    ];
-});
-
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\Product::class, function (Faker\Generator $faker) {
-    $category_ids = \DB::table('product_categories')->where('is_parent', false)->select('id')->get();
-    $category_id = $faker->randomElement($category_ids->toArray())->id;
-
-    $vendor_ids = \DB::table('vendors')->select('id')->get();
-    $vendor_id = $faker->randomElement($vendor_ids->toArray())->id;
-
-    return [
-        'category_id' => $category_id,
-        'vendor_id' => $vendor_id,
-        'name' => $faker->streetName,
-        'enable' => true,
-        'description' => $faker->sentence,
-        'slug' => $faker->unique()->slug,
-    ];
-});
-
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\Article::class, function (Faker\Generator $faker) {
     $category_ids = \DB::table('article_categories')->select('id')->get();
     $category_id = $faker->randomElement($category_ids->toArray())->id;
